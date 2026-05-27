@@ -72,14 +72,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Workly AI — AI Workplace Productivity Assistant" },
+      { name: "description", content: "Automate emails, summarize meetings, plan your week, and research smarter — all in one AI workspace." },
+      { property: "og:title", content: "Workly AI" },
+      { property: "og:description", content: "Your AI workplace assistant." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
