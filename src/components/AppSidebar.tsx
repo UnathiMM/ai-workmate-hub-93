@@ -30,6 +30,7 @@ const tools = [
   { title: "Task Planner", url: "/tasks", icon: ListChecks },
   { title: "Research Assistant", url: "/research", icon: Search },
   { title: "AI Chat", url: "/chat", icon: MessageSquare },
+  { title: "Finance Tracker", url: "/finances", icon: Wallet },
 ];
 
 export function AppSidebar() {
