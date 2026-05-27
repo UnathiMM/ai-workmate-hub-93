@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as TasksRouteImport } from './routes/tasks'
 import { Route as ResearchRouteImport } from './routes/research'
 import { Route as NotesRouteImport } from './routes/notes'
+import { Route as FinancesRouteImport } from './routes/finances'
 import { Route as EmailRouteImport } from './routes/email'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ChatIndexRouteImport } from './routes/chat.index'
@@ -31,6 +32,11 @@ const ResearchRoute = ResearchRouteImport.update({
 const NotesRoute = NotesRouteImport.update({
   id: '/notes',
   path: '/notes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinancesRoute = FinancesRouteImport.update({
+  id: '/finances',
+  path: '/finances',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EmailRoute = EmailRouteImport.update({
@@ -62,6 +68,7 @@ const ApiChatRoute = ApiChatRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/email': typeof EmailRoute
+  '/finances': typeof FinancesRoute
   '/notes': typeof NotesRoute
   '/research': typeof ResearchRoute
   '/tasks': typeof TasksRoute
@@ -72,6 +79,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/email': typeof EmailRoute
+  '/finances': typeof FinancesRoute
   '/notes': typeof NotesRoute
   '/research': typeof ResearchRoute
   '/tasks': typeof TasksRoute
@@ -83,6 +91,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/email': typeof EmailRoute
+  '/finances': typeof FinancesRoute
   '/notes': typeof NotesRoute
   '/research': typeof ResearchRoute
   '/tasks': typeof TasksRoute
@@ -95,6 +104,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/email'
+    | '/finances'
     | '/notes'
     | '/research'
     | '/tasks'
@@ -105,6 +115,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/email'
+    | '/finances'
     | '/notes'
     | '/research'
     | '/tasks'
@@ -115,6 +126,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/email'
+    | '/finances'
     | '/notes'
     | '/research'
     | '/tasks'
@@ -126,6 +138,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   EmailRoute: typeof EmailRoute
+  FinancesRoute: typeof FinancesRoute
   NotesRoute: typeof NotesRoute
   ResearchRoute: typeof ResearchRoute
   TasksRoute: typeof TasksRoute
@@ -155,6 +168,13 @@ declare module '@tanstack/react-router' {
       path: '/notes'
       fullPath: '/notes'
       preLoaderRoute: typeof NotesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/finances': {
+      id: '/finances'
+      path: '/finances'
+      fullPath: '/finances'
+      preLoaderRoute: typeof FinancesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/email': {
@@ -198,6 +218,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   EmailRoute: EmailRoute,
+  FinancesRoute: FinancesRoute,
   NotesRoute: NotesRoute,
   ResearchRoute: ResearchRoute,
   TasksRoute: TasksRoute,

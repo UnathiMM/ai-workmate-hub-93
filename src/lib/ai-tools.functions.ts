@@ -74,3 +74,29 @@ export const research = createServerFn({ method: "POST" })
     });
     return { text };
   });
+
+const FinanceInput = z.object({
+  transactions: z.array(z.object({
+    date: z.string().max(40),
+    description: z.string().max(300),
+    category: z.string().max(80),
+    type: z.enum(["income", "expense"]),
+    amount: z.number(),
+  })).min(1).max(500),
+});
+
+export const analyzeFinances = createServerFn({ method: "POST" })
+  .inputValidator((d: unknown) => FinanceInput.parse(d))
+  .handler(async ({ data }) => {
+    const income = data.transactions.filter((t) => t.type === "income").reduce((s, t) => s + t.amount, 0);
+    const expense = data.transactions.filter((t) => t.type === "expense").reduce((s, t) => s + t.amount, 0);
+    const summary = `Totals — income: ${income.toFixed(2)}, expense: ${expense.toFixed(2)}, net: ${(income - expense).toFixed(2)}.`;
+    const rows = data.transactions.map((t) => `${t.date} | ${t.type} | ${t.category} | ${t.amount.toFixed(2)} | ${t.description}`).join("\n");
+    const { text } = await generateText({
+      model: getLovableModel(),
+      system:
+        "You are a small-business finance analyst. Analyze the transactions and return concise markdown with: ## Snapshot (1-2 sentences), ## Top Spending Categories (bulleted with amounts), ## Trends & Anomalies, ## Cashflow Health, ## Recommendations (3-5 actionable bullets). Be specific with numbers from the data; do not invent transactions.",
+      prompt: `${summary}\n\nTransactions (date | type | category | amount | description):\n${rows}`,
+    });
+    return { text };
+  });
