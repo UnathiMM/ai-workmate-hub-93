@@ -111,9 +111,8 @@ function ChatLayout({
 
   const isLoading = status === "submitted" || status === "streaming";
 
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    const value = input.trim();
+  function handleSubmit(message: { text?: string }) {
+    const value = (message.text ?? input).trim();
     if (!value || isLoading) return;
     setInput("");
     sendMessage({ text: value });
@@ -196,23 +195,21 @@ function ChatLayout({
 
         <div className="border-t bg-background p-4">
           <div className="mx-auto w-full max-w-3xl">
-            <form onSubmit={handleSubmit}>
-              <PromptInput onSubmit={handleSubmit}>
-                <PromptInputTextarea
-                  ref={textareaRef}
-                  value={input}
-                  onChange={(e) => setInput(e.target.value)}
-                  placeholder="Message Workly…"
-                  disabled={isLoading}
-                />
-                <PromptInputFooter className="justify-between">
-                  <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                    <Sparkles className="size-3 text-primary" /> Review AI output before acting.
-                  </div>
-                  <PromptInputSubmit status={status} disabled={!input.trim() || isLoading} />
-                </PromptInputFooter>
-              </PromptInput>
-            </form>
+            <PromptInput onSubmit={handleSubmit}>
+              <PromptInputTextarea
+                ref={textareaRef}
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Message Workly…"
+                disabled={isLoading}
+              />
+              <PromptInputFooter className="justify-between">
+                <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                  <Sparkles className="size-3 text-primary" /> Review AI output before acting.
+                </div>
+                <PromptInputSubmit status={status} disabled={!input.trim() || isLoading} />
+              </PromptInputFooter>
+            </PromptInput>
           </div>
         </div>
       </div>
