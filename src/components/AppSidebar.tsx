@@ -7,6 +7,7 @@ import {
   Search,
   MessageSquare,
   Sparkles,
+  Wallet,
 } from "lucide-react";
 import {
   Sidebar,
