@@ -9,36 +9,30 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TasksRouteImport } from './routes/tasks'
-import { Route as ResearchRouteImport } from './routes/research'
-import { Route as NotesRouteImport } from './routes/notes'
-import { Route as EmailRouteImport } from './routes/email'
-import { Route as ChatRouteImport } from './routes/chat'
+import { Route as ScheduleRouteImport } from './routes/schedule'
+import { Route as ProgramsRouteImport } from './routes/programs'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CoachesRouteImport } from './routes/coaches'
 import { Route as IndexRouteImport } from './routes/index'
 
-const TasksRoute = TasksRouteImport.update({
-  id: '/tasks',
-  path: '/tasks',
+const ScheduleRoute = ScheduleRouteImport.update({
+  id: '/schedule',
+  path: '/schedule',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ResearchRoute = ResearchRouteImport.update({
-  id: '/research',
-  path: '/research',
+const ProgramsRoute = ProgramsRouteImport.update({
+  id: '/programs',
+  path: '/programs',
   getParentRoute: () => rootRouteImport,
 } as any)
-const NotesRoute = NotesRouteImport.update({
-  id: '/notes',
-  path: '/notes',
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
-const EmailRoute = EmailRouteImport.update({
-  id: '/email',
-  path: '/email',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ChatRoute = ChatRouteImport.update({
-  id: '/chat',
-  path: '/chat',
+const CoachesRoute = CoachesRouteImport.update({
+  id: '/coaches',
+  path: '/coaches',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -49,81 +43,70 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/chat': typeof ChatRoute
-  '/email': typeof EmailRoute
-  '/notes': typeof NotesRoute
-  '/research': typeof ResearchRoute
-  '/tasks': typeof TasksRoute
+  '/coaches': typeof CoachesRoute
+  '/contact': typeof ContactRoute
+  '/programs': typeof ProgramsRoute
+  '/schedule': typeof ScheduleRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/chat': typeof ChatRoute
-  '/email': typeof EmailRoute
-  '/notes': typeof NotesRoute
-  '/research': typeof ResearchRoute
-  '/tasks': typeof TasksRoute
+  '/coaches': typeof CoachesRoute
+  '/contact': typeof ContactRoute
+  '/programs': typeof ProgramsRoute
+  '/schedule': typeof ScheduleRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/chat': typeof ChatRoute
-  '/email': typeof EmailRoute
-  '/notes': typeof NotesRoute
-  '/research': typeof ResearchRoute
-  '/tasks': typeof TasksRoute
+  '/coaches': typeof CoachesRoute
+  '/contact': typeof ContactRoute
+  '/programs': typeof ProgramsRoute
+  '/schedule': typeof ScheduleRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/chat' | '/email' | '/notes' | '/research' | '/tasks'
+  fullPaths: '/' | '/coaches' | '/contact' | '/programs' | '/schedule'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/chat' | '/email' | '/notes' | '/research' | '/tasks'
-  id: '__root__' | '/' | '/chat' | '/email' | '/notes' | '/research' | '/tasks'
+  to: '/' | '/coaches' | '/contact' | '/programs' | '/schedule'
+  id: '__root__' | '/' | '/coaches' | '/contact' | '/programs' | '/schedule'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  ChatRoute: typeof ChatRoute
-  EmailRoute: typeof EmailRoute
-  NotesRoute: typeof NotesRoute
-  ResearchRoute: typeof ResearchRoute
-  TasksRoute: typeof TasksRoute
+  CoachesRoute: typeof CoachesRoute
+  ContactRoute: typeof ContactRoute
+  ProgramsRoute: typeof ProgramsRoute
+  ScheduleRoute: typeof ScheduleRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/tasks': {
-      id: '/tasks'
-      path: '/tasks'
-      fullPath: '/tasks'
-      preLoaderRoute: typeof TasksRouteImport
+    '/schedule': {
+      id: '/schedule'
+      path: '/schedule'
+      fullPath: '/schedule'
+      preLoaderRoute: typeof ScheduleRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/research': {
-      id: '/research'
-      path: '/research'
-      fullPath: '/research'
-      preLoaderRoute: typeof ResearchRouteImport
+    '/programs': {
+      id: '/programs'
+      path: '/programs'
+      fullPath: '/programs'
+      preLoaderRoute: typeof ProgramsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/notes': {
-      id: '/notes'
-      path: '/notes'
-      fullPath: '/notes'
-      preLoaderRoute: typeof NotesRouteImport
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/email': {
-      id: '/email'
-      path: '/email'
-      fullPath: '/email'
-      preLoaderRoute: typeof EmailRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/chat': {
-      id: '/chat'
-      path: '/chat'
-      fullPath: '/chat'
-      preLoaderRoute: typeof ChatRouteImport
+    '/coaches': {
+      id: '/coaches'
+      path: '/coaches'
+      fullPath: '/coaches'
+      preLoaderRoute: typeof CoachesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -138,11 +121,10 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  ChatRoute: ChatRoute,
-  EmailRoute: EmailRoute,
-  NotesRoute: NotesRoute,
-  ResearchRoute: ResearchRoute,
-  TasksRoute: TasksRoute,
+  CoachesRoute: CoachesRoute,
+  ContactRoute: ContactRoute,
+  ProgramsRoute: ProgramsRoute,
+  ScheduleRoute: ScheduleRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
