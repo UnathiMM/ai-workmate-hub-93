@@ -5,15 +5,14 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-display: "Fraunces", ui-serif, Georgia, serif;
-  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
   --radius-2xl: calc(var(--radius) + 8px);
-  --radius-3xl: calc(var(--radius) + 12px);
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -35,71 +34,78 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  --color-deep: var(--deep);
-  --color-wave: var(--wave);
-  --color-foam: var(--foam);
-  --color-reef: var(--reef);
-  --color-sand: var(--sand);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
 }
 
-/* Light, aqueous brand palette inspired by LTSA logo: deep navy + ocean blue + reef teal */
+/* Clean modern SaaS palette — indigo primary on near-white */
 :root {
-  --radius: 1rem;
-  --background: oklch(0.99 0.012 230);
-  --foreground: oklch(0.20 0.06 250);
+  --radius: 0.75rem;
+  --background: oklch(0.99 0.003 260);
+  --foreground: oklch(0.18 0.03 265);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.20 0.06 250);
+  --card-foreground: oklch(0.18 0.03 265);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.20 0.06 250);
+  --popover-foreground: oklch(0.18 0.03 265);
 
-  --primary: oklch(0.42 0.16 255);          /* LTSA navy */
-  --primary-foreground: oklch(0.99 0.005 220);
-  --secondary: oklch(0.94 0.03 220);
-  --secondary-foreground: oklch(0.22 0.08 250);
-  --muted: oklch(0.96 0.018 220);
-  --muted-foreground: oklch(0.48 0.04 240);
-  --accent: oklch(0.70 0.16 215);           /* ocean blue */
-  --accent-foreground: oklch(0.15 0.04 250);
+  --primary: oklch(0.52 0.20 270);
+  --primary-foreground: oklch(0.99 0.005 260);
+  --secondary: oklch(0.96 0.01 265);
+  --secondary-foreground: oklch(0.22 0.04 265);
+  --muted: oklch(0.965 0.008 260);
+  --muted-foreground: oklch(0.50 0.02 265);
+  --accent: oklch(0.95 0.02 270);
+  --accent-foreground: oklch(0.30 0.10 270);
   --destructive: oklch(0.60 0.22 25);
-  --destructive-foreground: oklch(0.99 0.005 220);
-  --border: oklch(0.22 0.06 250 / 10%);
-  --input: oklch(0.22 0.06 250 / 14%);
-  --ring: oklch(0.55 0.16 230);
+  --destructive-foreground: oklch(0.99 0.005 260);
+  --border: oklch(0.22 0.04 265 / 10%);
+  --input: oklch(0.22 0.04 265 / 14%);
+  --ring: oklch(0.55 0.18 270);
 
-  --deep: oklch(0.30 0.13 255);             /* deep navy */
-  --wave: oklch(0.62 0.16 230);             /* mid wave */
-  --foam: oklch(0.94 0.04 215);             /* foam */
-  --reef: oklch(0.65 0.13 175);             /* reef teal/green */
-  --sand: oklch(0.96 0.025 90);
+  --gradient-brand: linear-gradient(135deg, oklch(0.55 0.22 275), oklch(0.65 0.18 230));
+  --shadow-soft: 0 1px 2px oklch(0.18 0.03 265 / 6%), 0 8px 24px oklch(0.18 0.03 265 / 6%);
+  --shadow-glow: 0 12px 40px oklch(0.52 0.20 270 / 18%);
 
-  --sidebar: oklch(0.99 0.012 230);
-  --sidebar-foreground: oklch(0.20 0.06 250);
-  --sidebar-primary: oklch(0.42 0.16 255);
-  --sidebar-primary-foreground: oklch(0.99 0.005 220);
-  --sidebar-accent: oklch(0.94 0.03 220);
-  --sidebar-accent-foreground: oklch(0.22 0.08 250);
-  --sidebar-border: oklch(0.22 0.06 250 / 10%);
-  --sidebar-ring: oklch(0.55 0.16 230);
+  --sidebar: oklch(0.985 0.004 265);
+  --sidebar-foreground: oklch(0.22 0.03 265);
+  --sidebar-primary: oklch(0.52 0.20 270);
+  --sidebar-primary-foreground: oklch(0.99 0.005 260);
+  --sidebar-accent: oklch(0.95 0.015 270);
+  --sidebar-accent-foreground: oklch(0.30 0.10 270);
+  --sidebar-border: oklch(0.22 0.04 265 / 8%);
+  --sidebar-ring: oklch(0.55 0.18 270);
 }
 
 .dark {
-  --background: oklch(0.16 0.05 255);
-  --foreground: oklch(0.96 0.02 220);
-  --card: oklch(0.21 0.06 255);
-  --card-foreground: oklch(0.96 0.02 220);
-  --popover: oklch(0.21 0.06 255);
-  --popover-foreground: oklch(0.96 0.02 220);
-  --primary: oklch(0.78 0.14 225);
-  --primary-foreground: oklch(0.15 0.05 255);
-  --secondary: oklch(0.26 0.05 255);
-  --secondary-foreground: oklch(0.96 0.02 220);
-  --muted: oklch(0.26 0.05 255);
-  --muted-foreground: oklch(0.74 0.04 220);
-  --accent: oklch(0.32 0.10 220);
-  --accent-foreground: oklch(0.96 0.02 220);
+  --background: oklch(0.16 0.02 265);
+  --foreground: oklch(0.96 0.01 260);
+  --card: oklch(0.20 0.025 265);
+  --card-foreground: oklch(0.96 0.01 260);
+  --popover: oklch(0.20 0.025 265);
+  --popover-foreground: oklch(0.96 0.01 260);
+  --primary: oklch(0.72 0.18 275);
+  --primary-foreground: oklch(0.15 0.03 265);
+  --secondary: oklch(0.24 0.02 265);
+  --secondary-foreground: oklch(0.96 0.01 260);
+  --muted: oklch(0.24 0.02 265);
+  --muted-foreground: oklch(0.70 0.02 265);
+  --accent: oklch(0.30 0.06 275);
+  --accent-foreground: oklch(0.96 0.01 260);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 14%);
-  --foam: oklch(0.30 0.06 220);
+  --ring: oklch(0.65 0.18 275);
+
+  --sidebar: oklch(0.18 0.022 265);
+  --sidebar-foreground: oklch(0.94 0.01 260);
+  --sidebar-accent: oklch(0.26 0.04 275);
+  --sidebar-accent-foreground: oklch(0.96 0.01 260);
+  --sidebar-border: oklch(1 0 0 / 8%);
 }
 
 @layer base {
@@ -111,61 +117,15 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
-  h1, h2, h3, .font-display { font-family: var(--font-display); letter-spacing: -0.01em; }
-
-  .input {
-    width: 100%;
-    border-radius: 0.65rem;
-    border: 1px solid var(--color-input);
-    background-color: color-mix(in oklch, var(--color-card) 80%, transparent);
-    padding: 0.6rem 0.85rem;
-    font-size: 0.9rem;
-    color: var(--color-foreground);
-    outline: none;
-    transition: border-color 120ms, box-shadow 120ms;
-  }
-  .input::placeholder { color: var(--color-muted-foreground); }
-  .input:focus {
-    border-color: var(--color-ring);
-    box-shadow: 0 0 0 4px color-mix(in oklch, var(--color-ring) 22%, transparent);
-  }
+  h1, h2, h3, h4, .font-display { font-family: var(--font-display); letter-spacing: -0.015em; }
 }
 
-@utility ocean-gradient {
-  background:
-    radial-gradient(70% 60% at 85% 10%, color-mix(in oklch, var(--color-reef) 35%, transparent), transparent 60%),
-    radial-gradient(60% 50% at 10% 90%, color-mix(in oklch, var(--color-wave) 35%, transparent), transparent 60%),
-    linear-gradient(160deg, var(--color-deep), color-mix(in oklch, var(--color-wave) 70%, var(--color-deep)));
+@utility brand-gradient {
+  background: var(--gradient-brand);
 }
-
-@utility text-gradient-ocean {
-  background: linear-gradient(90deg, var(--color-wave), var(--color-reef));
+@utility text-gradient-brand {
+  background: var(--gradient-brand);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-}
-
-@utility wave-divider {
-  --wave-color: var(--color-background);
-  height: 56px;
-  background:
-    radial-gradient(50% 100% at 25% 100%, var(--wave-color) 60%, transparent 62%) 0 100% / 80px 40px repeat-x,
-    radial-gradient(50% 100% at 75% 0%, transparent 60%, var(--wave-color) 62%) 40px 100% / 80px 40px repeat-x;
-}
-
-/* Subtle caustics shimmer */
-@keyframes shimmer {
-  0%, 100% { opacity: 0.55; transform: translateX(0); }
-  50% { opacity: 0.85; transform: translateX(10px); }
-}
-.caustics::after {
-  content: "";
-  position: absolute; inset: 0;
-  background-image:
-    radial-gradient(circle at 20% 30%, rgba(255,255,255,0.12) 0 1px, transparent 2px),
-    radial-gradient(circle at 70% 60%, rgba(255,255,255,0.10) 0 1px, transparent 2px),
-    radial-gradient(circle at 45% 80%, rgba(255,255,255,0.10) 0 1px, transparent 2px);
-  mix-blend-mode: screen;
-  animation: shimmer 6s ease-in-out infinite;
-  pointer-events: none;
 }
